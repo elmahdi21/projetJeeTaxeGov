@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,6 +25,7 @@ public class Societe implements Serializable {
     @OneToMany(mappedBy = "societe")
     private List<DeclarationIs> declarationIss;
 
+    
     @OneToMany(mappedBy = "societe")
     private List<DeclarationTva> declarationTvas;
 
@@ -41,7 +43,8 @@ public class Societe implements Serializable {
     private String email;
     @ManyToOne
     private intervaleIs categorie;
-    @ManyToOne
+
+    @ManyToMany
     private List<Employe> employes;
 
     public long getId() {
@@ -59,10 +62,7 @@ public class Societe implements Serializable {
     public Societe() {
     }
 
-    public Societe(List<DeclarationIs> declarationIss, List<DeclarationTva> declarationTvas, List<DeclarationIr> declarationIrs, long id, String raisonSociale, String siegeSociale, String numTele, String numFax, String email, intervaleIs categorie, List<Employe> employes) {
-        this.declarationIss = declarationIss;
-        this.declarationTvas = declarationTvas;
-        this.declarationIrs = declarationIrs;
+    public Societe(long id, String raisonSociale, String siegeSociale, String numTele, String numFax, String email, intervaleIs categorie) {
         this.id = id;
         this.raisonSociale = raisonSociale;
         this.siegeSociale = siegeSociale;
@@ -70,7 +70,6 @@ public class Societe implements Serializable {
         this.numFax = numFax;
         this.email = email;
         this.categorie = categorie;
-        this.employes = employes;
     }
 
     public List<DeclarationIs> getDeclarationIss() {
@@ -152,7 +151,6 @@ public class Societe implements Serializable {
     public void setEmployes(List<Employe> employes) {
         this.employes = employes;
     }
-    
 
     @Override
     public int hashCode() {
@@ -178,7 +176,5 @@ public class Societe implements Serializable {
     public String toString() {
         return "Societe{" + "id=" + id + ", raisonSociale=" + raisonSociale + ", siegeSociale=" + siegeSociale + ", numTele=" + numTele + ", numFax=" + numFax + ", email=" + email + '}';
     }
-
-    
 
 }

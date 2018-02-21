@@ -51,6 +51,31 @@ public class CompteBanquaire implements Serializable {
         this.id = id;
     }
 
+    public Banque getBanque() {
+        return banque;
+    }
+
+    public void setBanque(Banque banque) {
+        this.banque = banque;
+    }
+
+    public Double getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+    public String getRib() {
+        return rib;
+    }
+
+    public void setRib(String rib) {
+        this.rib = rib;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

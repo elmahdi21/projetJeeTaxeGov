@@ -57,11 +57,10 @@ public class DeclarationIs implements Serializable {
         this.id = id;
     }
 
-    public DeclarationIs(Long id, Societe societe, TauxIs tauxIs, List<Exercice> exercices, Date dateDeclaration, RegimeDeclaration regimeDeclaration, Float gains, Float charges, Float montantIs) {
+    public DeclarationIs(Long id, Societe societe, TauxIs tauxIs,  Date dateDeclaration, RegimeDeclaration regimeDeclaration, Float gains, Float charges, Float montantIs) {
         this.id = id;
         this.societe = societe;
         this.tauxIs = tauxIs;
-        this.exercices = exercices;
         this.dateDeclaration = dateDeclaration;
         this.regimeDeclaration = regimeDeclaration;
         this.gains = gains;

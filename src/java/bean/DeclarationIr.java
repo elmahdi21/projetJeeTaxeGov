@@ -45,11 +45,9 @@ public class DeclarationIr implements Serializable {
         this.id = id;
     }
 
-    public DeclarationIr(List<TaxeIrEmploye> taxeIrEmployes, Long id, Societe societe, List<Employe> employes, Date dateDeclaration, Float montantIr) {
-        this.taxeIrEmployes = taxeIrEmployes;
+    public DeclarationIr( Long id, Societe societe, Date dateDeclaration, Float montantIr) {
         this.id = id;
         this.societe = societe;
-        this.employes = employes;
         this.dateDeclaration = dateDeclaration;
         this.montantIr = montantIr;
     }

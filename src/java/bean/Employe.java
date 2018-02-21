@@ -6,10 +6,12 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -28,6 +30,8 @@ public class Employe implements Serializable {
     private String numTele;
     private String email;
     private String profession;
+    @ManyToMany(mappedBy = "employes")
+    private List<Societe> societes;
 
     public Employe() {
     }

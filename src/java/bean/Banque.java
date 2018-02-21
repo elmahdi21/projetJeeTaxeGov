@@ -20,14 +20,13 @@ import javax.persistence.OneToMany;
 @Entity
 public class Banque implements Serializable {
 
-    @OneToMany(mappedBy = "banque")
-    private List<CompteBanquaire> compteBanquaires;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nom;
+    @OneToMany(mappedBy = "banque")
+    private List<CompteBanquaire> compteBanquaires;
 
     public Banque() {
     }
@@ -36,8 +35,8 @@ public class Banque implements Serializable {
         this.id = id;
     }
 
-    public Banque(List<CompteBanquaire> compteBanquaires, long id, String nom) {
-        this.compteBanquaires = compteBanquaires;
+    public Banque(long id, String nom) {
+
         this.id = id;
         this.nom = nom;
     }
@@ -57,7 +56,6 @@ public class Banque implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
 
     public long getId() {
         return id;
@@ -92,6 +90,4 @@ public class Banque implements Serializable {
         return "Banque{" + "id=" + id + ", nom=" + nom + '}';
     }
 
-   
-    
 }
