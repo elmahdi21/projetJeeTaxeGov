@@ -29,6 +29,36 @@ public class Utilisateur extends Employe implements Serializable {
         this.idFiscale = idFiscale;
     }
 
+    public Utilisateur() {
+    }
+
+    public Utilisateur(Long idFiscale) {
+        this.idFiscale = idFiscale;
+    }
+
+    public Utilisateur(Long idFiscale, String droitFiscale, String motDePasse) {
+        this.idFiscale = idFiscale;
+        this.droitFiscale = droitFiscale;
+        this.motDePasse = motDePasse;
+    }
+
+    public String getDroitFiscale() {
+        return droitFiscale;
+    }
+
+    public void setDroitFiscale(String droitFiscale) {
+        this.droitFiscale = droitFiscale;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -51,7 +81,9 @@ public class Utilisateur extends Employe implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Utilisateur[ idFiscale=" + idFiscale + " ]";
+        return "Utilisateur{" + "idFiscale=" + idFiscale + ", droitFiscale=" + droitFiscale + ", motDePasse=" + motDePasse + '}';
     }
+
+   
 
 }

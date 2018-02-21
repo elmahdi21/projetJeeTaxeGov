@@ -30,7 +30,7 @@ public class TauxIs implements Serializable {
     private Float taux;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateApp;
-
+   
     public Long getId() {
         return id;
     }
@@ -38,6 +38,46 @@ public class TauxIs implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public TauxIs() {
+    }
+
+    public TauxIs(Long id) {
+        this.id = id;
+    }
+
+    public TauxIs(Long id, intervaleIs categorie, Float taux, Date dateApp) {
+        this.id = id;
+        this.categorie = categorie;
+        this.taux = taux;
+        this.dateApp = dateApp;
+    }
+
+    public intervaleIs getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(intervaleIs categorie) {
+        this.categorie = categorie;
+    }
+
+    public Float getTaux() {
+        return taux;
+    }
+
+    public void setTaux(Float taux) {
+        this.taux = taux;
+    }
+
+    public Date getDateApp() {
+        return dateApp;
+    }
+
+    public void setDateApp(Date dateApp) {
+        this.dateApp = dateApp;
+    }
+    
+    
     
 
     @Override
@@ -62,7 +102,8 @@ public class TauxIs implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.TauxIs[ id=" + id + " ]";
+        return "TauxIs{" + "id=" + id + ", taux=" + taux + ", dateApp=" + dateApp + '}';
     }
 
+   
 }

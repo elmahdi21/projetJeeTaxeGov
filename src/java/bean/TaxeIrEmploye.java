@@ -40,6 +40,22 @@ public class TaxeIrEmploye implements Serializable {
         this.id = id;
     }
 
+    public TaxeIrEmploye() {
+    }
+
+    public TaxeIrEmploye(Long id) {
+        this.id = id;
+    }
+
+    public TaxeIrEmploye(Long id, DeclarationIr declarationIr, Employe employe, TrancheIr trancheIr, Float montantIr) {
+        this.id = id;
+        this.declarationIr = declarationIr;
+        this.employe = employe;
+        this.trancheIr = trancheIr;
+        this.montantIr = montantIr;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -62,7 +78,9 @@ public class TaxeIrEmploye implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.TaxeIrEmploye[ id=" + id + " ]";
+        return "TaxeIrEmploye{" + "id=" + id + ", employe=" + employe + ", trancheIr=" + trancheIr + ", montantIr=" + montantIr + '}';
     }
+
+   
 
 }

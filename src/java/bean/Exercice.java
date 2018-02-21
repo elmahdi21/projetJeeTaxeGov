@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -23,7 +24,21 @@ public class Exercice implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long montant;
-    private String Type; //achat ou vente
+    @OneToOne
+    private CategorieTVA categorieTVA;
+
+    public Exercice() {
+    }
+
+    public Exercice(Long id, Long montant, CategorieTVA categorieTVA) {
+        this.id = id;
+        this.montant = montant;
+        this.categorieTVA = categorieTVA;
+    }
+
+    public Exercice(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -31,19 +46,6 @@ public class Exercice implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Exercice() {
-    }
-
-    public Exercice(Long id) {
-        this.id = id;
-    }
-
-    public Exercice(Long id, Long montant, String Type) {
-        this.id = id;
-        this.montant = montant;
-        this.Type = Type;
     }
 
     public Long getMontant() {
@@ -54,16 +56,17 @@ public class Exercice implements Serializable {
         this.montant = montant;
     }
 
-    public String getType() {
-        return Type;
+    public CategorieTVA getCategorieTVA() {
+        return categorieTVA;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setCategorieTVA(CategorieTVA categorieTVA) {
+        this.categorieTVA = categorieTVA;
     }
     
     
 
+   
     @Override
     public int hashCode() {
         int hash = 0;
@@ -86,9 +89,11 @@ public class Exercice implements Serializable {
 
     @Override
     public String toString() {
-        return "Exercice{" + "id=" + id + ", montant=" + montant + ", Type=" + Type + '}';
+        return "Exercice{" + "id=" + id + ", montant=" + montant + '}';
     }
 
-  
+    
+    
 
+   
 }

@@ -33,6 +33,37 @@ public class TauxRetard implements Serializable {
         this.id = id;
     }
 
+    public TauxRetard() {
+    }
+
+    public TauxRetard(Long id) {
+        this.id = id;
+    }
+
+    public TauxRetard(Long id, Float tauxInitiale, Float tauxAdd) {
+        this.id = id;
+        this.tauxInitiale = tauxInitiale;
+        this.tauxAdd = tauxAdd;
+    }
+
+    public Float getTauxInitiale() {
+        return tauxInitiale;
+    }
+
+    public void setTauxInitiale(Float tauxInitiale) {
+        this.tauxInitiale = tauxInitiale;
+    }
+
+    public Float getTauxAdd() {
+        return tauxAdd;
+    }
+
+    public void setTauxAdd(Float tauxAdd) {
+        this.tauxAdd = tauxAdd;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -55,7 +86,8 @@ public class TauxRetard implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.TauxRetardTva[ id=" + id + " ]";
+        return "TauxRetard{" + "id=" + id + ", tauxInitiale=" + tauxInitiale + ", tauxAdd=" + tauxAdd + '}';
     }
+
 
 }

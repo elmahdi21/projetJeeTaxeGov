@@ -27,6 +27,20 @@ public class TrancheIr implements Serializable {
     private Long maxi;
     private Float taux;
 
+    public TrancheIr() {
+    }
+
+    public TrancheIr(Long id) {
+        this.id = id;
+    }
+
+    public TrancheIr(Long id, Long mini, Long maxi, Float taux) {
+        this.id = id;
+        this.mini = mini;
+        this.maxi = maxi;
+        this.taux = taux;
+    }
+
     public Long getId() {
         return id;
     }
@@ -34,6 +48,35 @@ public class TrancheIr implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Long getMini() {
+        return mini;
+    }
+
+    public void setMini(Long mini) {
+        this.mini = mini;
+    }
+
+    public Long getMaxi() {
+        return maxi;
+    }
+
+    public void setMaxi(Long maxi) {
+        this.maxi = maxi;
+    }
+
+    public Float getTaux() {
+        return taux;
+    }
+
+    public void setTaux(Float taux) {
+        this.taux = taux;
+    }
+
+   
+    
+
+   
 
     @Override
     public int hashCode() {
@@ -57,7 +100,7 @@ public class TrancheIr implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.TrancheIr[ id=" + id + " ]";
+        return "TrancheIr{" + "id=" + id + ", mini=" + mini + ", maxi=" + maxi + ", taux=" + taux + '}';
     }
 
 }

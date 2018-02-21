@@ -24,6 +24,7 @@ public class CategorieTVA implements Serializable {
     private Long id;
     private int num;
     private String nom;
+    private Float taux;
 
     public CategorieTVA() {
     }

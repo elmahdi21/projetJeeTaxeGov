@@ -25,6 +25,35 @@ public class intervaleIs implements Serializable {
     private Double mini;
     private Double maxi;
 
+    public intervaleIs() {
+    }
+
+    public intervaleIs(Long id) {
+        this.id = id;
+    }
+
+    public intervaleIs(Long id, Double mini, Double maxi) {
+        this.id = id;
+        this.mini = mini;
+        this.maxi = maxi;
+    }
+
+    public Double getMini() {
+        return mini;
+    }
+
+    public void setMini(Double mini) {
+        this.mini = mini;
+    }
+
+    public Double getMaxi() {
+        return maxi;
+    }
+
+    public void setMaxi(Double maxi) {
+        this.maxi = maxi;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -55,7 +84,9 @@ public class intervaleIs implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.CategorieExercice[ id=" + id + " ]";
+        return "intervaleIs{" + "id=" + id + ", mini=" + mini + ", maxi=" + maxi + '}';
     }
+
+  
 
 }
