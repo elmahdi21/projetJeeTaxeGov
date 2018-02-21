@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContribuableEditDlg" widgetVar="ContribuableEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditContribuableTitle}">
+            <h:form id="ContribuableEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contribuableController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_motDePasse}" for="motDePasse" />
+                        <p:inputText id="motDePasse" value="#{contribuableController.selected.motDePasse}" title="#{bundle.EditContribuableTitle_motDePasse}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_idFiscal}" for="idFiscal" />
+                        <p:inputText id="idFiscal" value="#{contribuableController.selected.idFiscal}" title="#{bundle.EditContribuableTitle_idFiscal}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{contribuableController.selected.nom}" title="#{bundle.EditContribuableTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_pNom}" for="pNom" />
+                        <p:inputText id="pNom" value="#{contribuableController.selected.pNom}" title="#{bundle.EditContribuableTitle_pNom}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_CIN}" for="CIN" />
+                        <p:inputText id="CIN" value="#{contribuableController.selected.CIN}" title="#{bundle.EditContribuableTitle_CIN}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_numTele}" for="numTele" />
+                        <p:inputText id="numTele" value="#{contribuableController.selected.numTele}" title="#{bundle.EditContribuableTitle_numTele}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{contribuableController.selected.email}" title="#{bundle.EditContribuableTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_profession}" for="profession" />
+                        <p:inputText id="profession" value="#{contribuableController.selected.profession}" title="#{bundle.EditContribuableTitle_profession}" />
+                        <p:outputLabel value="#{bundle.EditContribuableLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{contribuableController.selected.id}" title="#{bundle.EditContribuableTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{contribuableController.update}" value="#{bundle.Save}" update="display,:ContribuableListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContribuableEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ContribuableEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

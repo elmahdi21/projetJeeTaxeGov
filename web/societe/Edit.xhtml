@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SocieteEditDlg" widgetVar="SocieteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSocieteTitle}">
+            <h:form id="SocieteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{societeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{societeController.selected.id}" title="#{bundle.EditSocieteTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_raisonSociale}" for="raisonSociale" />
+                        <p:inputText id="raisonSociale" value="#{societeController.selected.raisonSociale}" title="#{bundle.EditSocieteTitle_raisonSociale}" />
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_siegeSociale}" for="siegeSociale" />
+                        <p:inputText id="siegeSociale" value="#{societeController.selected.siegeSociale}" title="#{bundle.EditSocieteTitle_siegeSociale}" />
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_numTele}" for="numTele" />
+                        <p:inputText id="numTele" value="#{societeController.selected.numTele}" title="#{bundle.EditSocieteTitle_numTele}" />
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_numFax}" for="numFax" />
+                        <p:inputText id="numFax" value="#{societeController.selected.numFax}" title="#{bundle.EditSocieteTitle_numFax}" />
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{societeController.selected.email}" title="#{bundle.EditSocieteTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_categorie}" for="categorie" />
+                        <p:selectOneMenu id="categorie" value="#{societeController.selected.categorie}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{intervaleIsController.itemsAvailableSelectOne}"
+                                           var="categorieItem"
+                                           itemValue="#{categorieItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditSocieteLabel_employes}" for="employes" />
+                        <p:selectOneMenu id="employes" value="#{societeController.selected.employes}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{employeController.itemsAvailableSelectOne}"
+                                           var="employesItem"
+                                           itemValue="#{employesItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{societeController.update}" value="#{bundle.Save}" update="display,:SocieteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SocieteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SocieteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

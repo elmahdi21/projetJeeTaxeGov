@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="intervaleIsEditDlg" widgetVar="intervaleIsEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditintervaleIsTitle}">
+            <h:form id="intervaleIsEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{intervaleIsController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditintervaleIsLabel_mini}" for="mini" />
+                        <p:inputText id="mini" value="#{intervaleIsController.selected.mini}" title="#{bundle.EditintervaleIsTitle_mini}" />
+                        <p:outputLabel value="#{bundle.EditintervaleIsLabel_maxi}" for="maxi" />
+                        <p:inputText id="maxi" value="#{intervaleIsController.selected.maxi}" title="#{bundle.EditintervaleIsTitle_maxi}" />
+                        <p:outputLabel value="#{bundle.EditintervaleIsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{intervaleIsController.selected.id}" title="#{bundle.EditintervaleIsTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{intervaleIsController.update}" value="#{bundle.Save}" update="display,:intervaleIsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'intervaleIsEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="intervaleIsEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurViewDlg" widgetVar="UtilisateurViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUtilisateurTitle}">
+            <h:form id="UtilisateurViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{utilisateurController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_idFiscale}"/>
+                        <h:outputText value="#{utilisateurController.selected.idFiscale}" title="#{bundle.ViewUtilisateurTitle_idFiscale}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_droitFiscale}"/>
+                        <h:outputText value="#{utilisateurController.selected.droitFiscale}" title="#{bundle.ViewUtilisateurTitle_droitFiscale}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_motDePasse}"/>
+                        <h:outputText value="#{utilisateurController.selected.motDePasse}" title="#{bundle.ViewUtilisateurTitle_motDePasse}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_nom}"/>
+                        <h:outputText value="#{utilisateurController.selected.nom}" title="#{bundle.ViewUtilisateurTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_pNom}"/>
+                        <h:outputText value="#{utilisateurController.selected.pNom}" title="#{bundle.ViewUtilisateurTitle_pNom}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_CIN}"/>
+                        <h:outputText value="#{utilisateurController.selected.CIN}" title="#{bundle.ViewUtilisateurTitle_CIN}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_numTele}"/>
+                        <h:outputText value="#{utilisateurController.selected.numTele}" title="#{bundle.ViewUtilisateurTitle_numTele}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_email}"/>
+                        <h:outputText value="#{utilisateurController.selected.email}" title="#{bundle.ViewUtilisateurTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_profession}"/>
+                        <h:outputText value="#{utilisateurController.selected.profession}" title="#{bundle.ViewUtilisateurTitle_profession}"/>
+                        <h:outputText value="#{bundle.ViewUtilisateurLabel_id}"/>
+                        <h:outputText value="#{utilisateurController.selected.id}" title="#{bundle.ViewUtilisateurTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UtilisateurViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

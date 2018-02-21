@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SocieteViewDlg" widgetVar="SocieteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSocieteTitle}">
+            <h:form id="SocieteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{societeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSocieteLabel_id}"/>
+                        <h:outputText value="#{societeController.selected.id}" title="#{bundle.ViewSocieteTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_raisonSociale}"/>
+                        <h:outputText value="#{societeController.selected.raisonSociale}" title="#{bundle.ViewSocieteTitle_raisonSociale}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_siegeSociale}"/>
+                        <h:outputText value="#{societeController.selected.siegeSociale}" title="#{bundle.ViewSocieteTitle_siegeSociale}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_numTele}"/>
+                        <h:outputText value="#{societeController.selected.numTele}" title="#{bundle.ViewSocieteTitle_numTele}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_numFax}"/>
+                        <h:outputText value="#{societeController.selected.numFax}" title="#{bundle.ViewSocieteTitle_numFax}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_email}"/>
+                        <h:outputText value="#{societeController.selected.email}" title="#{bundle.ViewSocieteTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_categorie}"/>
+                        <h:outputText value="#{societeController.selected.categorie}" title="#{bundle.ViewSocieteTitle_categorie}"/>
+                        <h:outputText value="#{bundle.ViewSocieteLabel_employes}"/>
+                        <h:outputText value="#{societeController.selected.employes}" title="#{bundle.ViewSocieteTitle_employes}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SocieteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

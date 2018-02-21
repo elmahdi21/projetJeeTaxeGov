@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurEditDlg" widgetVar="UtilisateurEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUtilisateurTitle}">
+            <h:form id="UtilisateurEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{utilisateurController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_idFiscale}" for="idFiscale" />
+                        <p:inputText id="idFiscale" value="#{utilisateurController.selected.idFiscale}" title="#{bundle.EditUtilisateurTitle_idFiscale}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_droitFiscale}" for="droitFiscale" />
+                        <p:inputText id="droitFiscale" value="#{utilisateurController.selected.droitFiscale}" title="#{bundle.EditUtilisateurTitle_droitFiscale}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_motDePasse}" for="motDePasse" />
+                        <p:inputText id="motDePasse" value="#{utilisateurController.selected.motDePasse}" title="#{bundle.EditUtilisateurTitle_motDePasse}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{utilisateurController.selected.nom}" title="#{bundle.EditUtilisateurTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_pNom}" for="pNom" />
+                        <p:inputText id="pNom" value="#{utilisateurController.selected.pNom}" title="#{bundle.EditUtilisateurTitle_pNom}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_CIN}" for="CIN" />
+                        <p:inputText id="CIN" value="#{utilisateurController.selected.CIN}" title="#{bundle.EditUtilisateurTitle_CIN}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_numTele}" for="numTele" />
+                        <p:inputText id="numTele" value="#{utilisateurController.selected.numTele}" title="#{bundle.EditUtilisateurTitle_numTele}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{utilisateurController.selected.email}" title="#{bundle.EditUtilisateurTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_profession}" for="profession" />
+                        <p:inputText id="profession" value="#{utilisateurController.selected.profession}" title="#{bundle.EditUtilisateurTitle_profession}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{utilisateurController.selected.id}" title="#{bundle.EditUtilisateurTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{utilisateurController.update}" value="#{bundle.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UtilisateurEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UtilisateurEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

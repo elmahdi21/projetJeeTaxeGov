@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DeclarationIsEditDlg" widgetVar="DeclarationIsEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDeclarationIsTitle}">
+            <h:form id="DeclarationIsEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{declarationIsController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{declarationIsController.selected.id}" title="#{bundle.EditDeclarationIsTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_societe}" for="societe" />
+                        <p:selectOneMenu id="societe" value="#{declarationIsController.selected.societe}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{societeController.itemsAvailableSelectOne}"
+                                           var="societeItem"
+                                           itemValue="#{societeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_tauxIs}" for="tauxIs" />
+                        <p:selectOneMenu id="tauxIs" value="#{declarationIsController.selected.tauxIs}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tauxIsController.itemsAvailableSelectOne}"
+                                           var="tauxIsItem"
+                                           itemValue="#{tauxIsItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_dateDeclaration}" for="dateDeclaration" />
+                        <p:calendar id="dateDeclaration" pattern="MM/dd/yyyy" value="#{declarationIsController.selected.dateDeclaration}" title="#{bundle.EditDeclarationIsTitle_dateDeclaration}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_regimeDeclaration}" for="regimeDeclaration" />
+                        <p:selectOneMenu id="regimeDeclaration" value="#{declarationIsController.selected.regimeDeclaration}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{regimeDeclarationController.itemsAvailableSelectOne}"
+                                           var="regimeDeclarationItem"
+                                           itemValue="#{regimeDeclarationItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_gains}" for="gains" />
+                        <p:inputText id="gains" value="#{declarationIsController.selected.gains}" title="#{bundle.EditDeclarationIsTitle_gains}" />
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_charges}" for="charges" />
+                        <p:inputText id="charges" value="#{declarationIsController.selected.charges}" title="#{bundle.EditDeclarationIsTitle_charges}" />
+                        <p:outputLabel value="#{bundle.EditDeclarationIsLabel_montantIs}" for="montantIs" />
+                        <p:inputText id="montantIs" value="#{declarationIsController.selected.montantIs}" title="#{bundle.EditDeclarationIsTitle_montantIs}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{declarationIsController.update}" value="#{bundle.Save}" update="display,:DeclarationIsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DeclarationIsEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DeclarationIsEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
