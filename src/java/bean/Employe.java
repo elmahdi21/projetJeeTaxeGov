@@ -107,6 +107,15 @@ public class Employe implements Serializable {
         this.id = id;
     }
 
+    public List<Societe> getSocietes() {
+        return societes;
+    }
+
+    public void setSocietes(List<Societe> societes) {
+        this.societes = societes;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

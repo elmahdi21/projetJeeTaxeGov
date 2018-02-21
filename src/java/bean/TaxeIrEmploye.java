@@ -54,6 +54,39 @@ public class TaxeIrEmploye implements Serializable {
         this.trancheIr = trancheIr;
         this.montantIr = montantIr;
     }
+
+    public DeclarationIr getDeclarationIr() {
+        return declarationIr;
+    }
+
+    public void setDeclarationIr(DeclarationIr declarationIr) {
+        this.declarationIr = declarationIr;
+    }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
+
+    public TrancheIr getTrancheIr() {
+        return trancheIr;
+    }
+
+    public void setTrancheIr(TrancheIr trancheIr) {
+        this.trancheIr = trancheIr;
+    }
+
+    public Float getMontantIr() {
+        return montantIr;
+    }
+
+    public void setMontantIr(Float montantIr) {
+        this.montantIr = montantIr;
+    }
+    
     
 
     @Override

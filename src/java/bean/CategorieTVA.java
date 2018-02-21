@@ -63,6 +63,16 @@ public class CategorieTVA implements Serializable {
         this.id = id;
     }
 
+    public Float getTaux() {
+        return taux;
+    }
+
+    public void setTaux(Float taux) {
+        this.taux = taux;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
