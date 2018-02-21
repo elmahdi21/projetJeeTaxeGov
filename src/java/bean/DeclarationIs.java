@@ -50,6 +50,90 @@ public class DeclarationIs implements Serializable {
         this.id = id;
     }
 
+    public DeclarationIs() {
+    }
+
+    public DeclarationIs(Long id) {
+        this.id = id;
+    }
+
+    public DeclarationIs(Long id, Societe societe, TauxIs tauxIs, List<Exercice> exercices, Date dateDeclaration, RegimeDeclaration regimeDeclaration, Float gains, Float charges, Float montantIs) {
+        this.id = id;
+        this.societe = societe;
+        this.tauxIs = tauxIs;
+        this.exercices = exercices;
+        this.dateDeclaration = dateDeclaration;
+        this.regimeDeclaration = regimeDeclaration;
+        this.gains = gains;
+        this.charges = charges;
+        this.montantIs = montantIs;
+    }
+
+    public Societe getSociete() {
+        return societe;
+    }
+
+    public void setSociete(Societe societe) {
+        this.societe = societe;
+    }
+
+    public TauxIs getTauxIs() {
+        return tauxIs;
+    }
+
+    public void setTauxIs(TauxIs tauxIs) {
+        this.tauxIs = tauxIs;
+    }
+
+    public List<Exercice> getExercices() {
+        return exercices;
+    }
+
+    public void setExercices(List<Exercice> exercices) {
+        this.exercices = exercices;
+    }
+
+    public Date getDateDeclaration() {
+        return dateDeclaration;
+    }
+
+    public void setDateDeclaration(Date dateDeclaration) {
+        this.dateDeclaration = dateDeclaration;
+    }
+
+    public RegimeDeclaration getRegimeDeclaration() {
+        return regimeDeclaration;
+    }
+
+    public void setRegimeDeclaration(RegimeDeclaration regimeDeclaration) {
+        this.regimeDeclaration = regimeDeclaration;
+    }
+
+    public Float getGains() {
+        return gains;
+    }
+
+    public void setGains(Float gains) {
+        this.gains = gains;
+    }
+
+    public Float getCharges() {
+        return charges;
+    }
+
+    public void setCharges(Float charges) {
+        this.charges = charges;
+    }
+
+    public Float getMontantIs() {
+        return montantIs;
+    }
+
+    public void setMontantIs(Float montantIs) {
+        this.montantIs = montantIs;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -72,7 +156,9 @@ public class DeclarationIs implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.DeclarationIs[ id=" + id + " ]";
+        return "DeclarationIs{" + "id=" + id + ", dateDeclaration=" + dateDeclaration + ", gains=" + gains + ", charges=" + charges + ", montantIs=" + montantIs + '}';
     }
+
+    
 
 }

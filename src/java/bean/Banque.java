@@ -29,6 +29,36 @@ public class Banque implements Serializable {
     private long id;
     private String nom;
 
+    public Banque() {
+    }
+
+    public Banque(long id) {
+        this.id = id;
+    }
+
+    public Banque(List<CompteBanquaire> compteBanquaires, long id, String nom) {
+        this.compteBanquaires = compteBanquaires;
+        this.id = id;
+        this.nom = nom;
+    }
+
+    public List<CompteBanquaire> getCompteBanquaires() {
+        return compteBanquaires;
+    }
+
+    public void setCompteBanquaires(List<CompteBanquaire> compteBanquaires) {
+        this.compteBanquaires = compteBanquaires;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+
     public long getId() {
         return id;
     }
@@ -59,7 +89,9 @@ public class Banque implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Banque[ id=" + id + " ]";
+        return "Banque{" + "id=" + id + ", nom=" + nom + '}';
     }
+
+   
     
 }

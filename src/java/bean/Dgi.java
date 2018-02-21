@@ -25,6 +25,35 @@ public class Dgi implements Serializable {
     private String login;
     private String password;
 
+    public Dgi() {
+    }
+
+    public Dgi(Long id) {
+        this.id = id;
+    }
+
+    public Dgi(Long id, String login, String password) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -55,7 +84,8 @@ public class Dgi implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Dgi[ id=" + id + " ]";
+        return "Dgi{" + "id=" + id + ", login=" + login + ", password=" + password + '}';
     }
+
 
 }

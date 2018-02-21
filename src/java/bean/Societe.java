@@ -52,6 +52,28 @@ public class Societe implements Serializable {
         this.id = id;
     }
 
+    public Societe(long id) {
+        this.id = id;
+    }
+
+    public Societe() {
+    }
+
+    public Societe(List<DeclarationIs> declarationIss, List<DeclarationTva> declarationTvas, List<DeclarationIr> declarationIrs, long id, String raisonSociale, String siegeSociale, String numTele, String numFax, String email, intervaleIs categorie, List<Employe> employes) {
+        this.declarationIss = declarationIss;
+        this.declarationTvas = declarationTvas;
+        this.declarationIrs = declarationIrs;
+        this.id = id;
+        this.raisonSociale = raisonSociale;
+        this.siegeSociale = siegeSociale;
+        this.numTele = numTele;
+        this.numFax = numFax;
+        this.email = email;
+        this.categorie = categorie;
+        this.employes = employes;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -74,7 +96,9 @@ public class Societe implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Societe[ id=" + id + " ]";
+        return "Societe{" + "id=" + id + ", raisonSociale=" + raisonSociale + ", siegeSociale=" + siegeSociale + ", numTele=" + numTele + ", numFax=" + numFax + ", email=" + email + '}';
     }
+
+    
 
 }

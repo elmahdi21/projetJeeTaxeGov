@@ -28,6 +28,21 @@ public class CompteBanquaire implements Serializable {
     private Double solde;
     private String rib;
 
+    public CompteBanquaire() {
+    }
+
+    public CompteBanquaire(Long id) {
+        this.id = id;
+    }
+
+    public CompteBanquaire(Long id, Banque banque, Double solde, String rib) {
+        this.id = id;
+        this.banque = banque;
+        this.solde = solde;
+        this.rib = rib;
+    }
+    
+
     public Long getId() {
         return id;
     }
@@ -58,7 +73,8 @@ public class CompteBanquaire implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.CompteBanquaire[ id=" + id + " ]";
+        return "CompteBanquaire{" + "id=" + id + ", solde=" + solde + ", rib=" + rib + '}';
     }
+
     
 }

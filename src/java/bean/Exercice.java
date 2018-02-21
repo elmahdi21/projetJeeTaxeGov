@@ -33,6 +33,37 @@ public class Exercice implements Serializable {
         this.id = id;
     }
 
+    public Exercice() {
+    }
+
+    public Exercice(Long id) {
+        this.id = id;
+    }
+
+    public Exercice(Long id, Long montant, String Type) {
+        this.id = id;
+        this.montant = montant;
+        this.Type = Type;
+    }
+
+    public Long getMontant() {
+        return montant;
+    }
+
+    public void setMontant(Long montant) {
+        this.montant = montant;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String Type) {
+        this.Type = Type;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -55,7 +86,9 @@ public class Exercice implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Exercice[ id=" + id + " ]";
+        return "Exercice{" + "id=" + id + ", montant=" + montant + ", Type=" + Type + '}';
     }
+
+  
 
 }

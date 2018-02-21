@@ -25,6 +25,35 @@ public class CategorieTVA implements Serializable {
     private int num;
     private String nom;
 
+    public CategorieTVA() {
+    }
+
+    public CategorieTVA(Long id) {
+        this.id = id;
+    }
+
+    public CategorieTVA(Long id, int num, String nom) {
+        this.id = id;
+        this.num = num;
+        this.nom = nom;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+        
     public Long getId() {
         return id;
     }
@@ -55,7 +84,9 @@ public class CategorieTVA implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.CategorieTVA[ id=" + id + " ]";
+        return "CategorieTVA{" + "id=" + id + ", num=" + num + ", nom=" + nom + '}';
     }
+
+   
 
 }

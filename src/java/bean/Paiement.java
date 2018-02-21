@@ -39,6 +39,46 @@ public class Paiement implements Serializable {
         this.id = id;
     }
 
+    public Paiement() {
+    }
+
+    public Paiement(Long id) {
+        this.id = id;
+    }
+
+    public Paiement(Long id, Double montant, Societe societe, Date datePaiement) {
+        this.id = id;
+        this.montant = montant;
+        this.societe = societe;
+        this.datePaiement = datePaiement;
+    }
+
+    public Double getMontant() {
+        return montant;
+    }
+
+    public void setMontant(Double montant) {
+        this.montant = montant;
+    }
+
+    public Societe getSociete() {
+        return societe;
+    }
+
+    public void setSociete(Societe societe) {
+        this.societe = societe;
+    }
+
+    public Date getDatePaiement() {
+        return datePaiement;
+    }
+
+    public void setDatePaiement(Date datePaiement) {
+        this.datePaiement = datePaiement;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -61,7 +101,9 @@ public class Paiement implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Paiement[ id=" + id + " ]";
+        return "Paiement{" + "id=" + id + ", montant=" + montant + ", societe=" + societe + ", datePaiement=" + datePaiement + '}';
     }
+
+  
 
 }

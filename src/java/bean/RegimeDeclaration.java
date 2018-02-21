@@ -32,6 +32,28 @@ public class RegimeDeclaration implements Serializable {
         this.id = id;
     }
 
+    public RegimeDeclaration() {
+    }
+
+    public RegimeDeclaration(Long id) {
+        this.id = id;
+    }
+
+    public RegimeDeclaration(Long id, String type) {
+        this.id = id;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -54,7 +76,9 @@ public class RegimeDeclaration implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.RgimeDeclaration[ id=" + id + " ]";
+        return "RegimeDeclaration{" + "id=" + id + ", type=" + type + '}';
     }
+
+    
 
 }

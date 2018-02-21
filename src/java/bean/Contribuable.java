@@ -20,6 +20,26 @@ public class Contribuable extends Employe implements Serializable{
     private Long idFiscal;
     private String motDePasse;
 
+    public Contribuable() {
+    }
+
+    public Contribuable(Long idFiscal) {
+        this.idFiscal = idFiscal;
+    }
+
+    public Contribuable(Long idFiscal, String motDePasse) {
+        this.idFiscal = idFiscal;
+        this.motDePasse = motDePasse;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+    
     public Long getIdFiscal() {
         return idFiscal;
     }
@@ -50,7 +70,8 @@ public class Contribuable extends Employe implements Serializable{
 
     @Override
     public String toString() {
-        return "bean.Contribuable[ idFiscal=" + idFiscal + " ]";
+        return "Contribuable{" + "idFiscal=" + idFiscal + ", motDePasse=" + motDePasse + '}';
     }
-    
+
+  
 }

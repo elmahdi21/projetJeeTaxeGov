@@ -38,6 +38,22 @@ public class DeclarationIr implements Serializable {
     private Date dateDeclaration;
     private Float montantIr;
 
+    public DeclarationIr() {
+    }
+
+    public DeclarationIr(Long id) {
+        this.id = id;
+    }
+
+    public DeclarationIr(List<TaxeIrEmploye> taxeIrEmployes, Long id, Societe societe, List<Employe> employes, Date dateDeclaration, Float montantIr) {
+        this.taxeIrEmployes = taxeIrEmployes;
+        this.id = id;
+        this.societe = societe;
+        this.employes = employes;
+        this.dateDeclaration = dateDeclaration;
+        this.montantIr = montantIr;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -45,6 +61,48 @@ public class DeclarationIr implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<TaxeIrEmploye> getTaxeIrEmployes() {
+        return taxeIrEmployes;
+    }
+
+    public void setTaxeIrEmployes(List<TaxeIrEmploye> taxeIrEmployes) {
+        this.taxeIrEmployes = taxeIrEmployes;
+    }
+
+    public Societe getSociete() {
+        return societe;
+    }
+
+    public void setSociete(Societe societe) {
+        this.societe = societe;
+    }
+
+    public List<Employe> getEmployes() {
+        return employes;
+    }
+
+    public void setEmployes(List<Employe> employes) {
+        this.employes = employes;
+    }
+
+    public Date getDateDeclaration() {
+        return dateDeclaration;
+    }
+
+    public void setDateDeclaration(Date dateDeclaration) {
+        this.dateDeclaration = dateDeclaration;
+    }
+
+    public Float getMontantIr() {
+        return montantIr;
+    }
+
+    public void setMontantIr(Float montantIr) {
+        this.montantIr = montantIr;
+    }
+    
+    
 
     @Override
     public int hashCode() {
@@ -68,7 +126,10 @@ public class DeclarationIr implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.DeclarationIr[ id=" + id + " ]";
+        return "DeclarationIr{" + "id=" + id + ", dateDeclaration=" + dateDeclaration + ", montantIr=" + montantIr + '}';
     }
+
+    
+
 
 }

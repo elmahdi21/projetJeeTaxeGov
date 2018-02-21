@@ -28,6 +28,71 @@ public class Employe implements Serializable {
     private String numTele;
     private String email;
     private String profession;
+
+    public Employe() {
+    }
+
+    public Employe(Long id) {
+        this.id = id;
+    }
+
+    public Employe(Long id, String nom, String pNom, String CIN, String numTele, String email, String profession) {
+        this.id = id;
+        this.nom = nom;
+        this.pNom = pNom;
+        this.CIN = CIN;
+        this.numTele = numTele;
+        this.email = email;
+        this.profession = profession;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getpNom() {
+        return pNom;
+    }
+
+    public void setpNom(String pNom) {
+        this.pNom = pNom;
+    }
+
+    public String getCIN() {
+        return CIN;
+    }
+
+    public void setCIN(String CIN) {
+        this.CIN = CIN;
+    }
+
+    public String getNumTele() {
+        return numTele;
+    }
+
+    public void setNumTele(String numTele) {
+        this.numTele = numTele;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
     
     
     public Long getId() {
@@ -60,7 +125,9 @@ public class Employe implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Employe[ id=" + id + " ]";
+        return "Employe{" + "id=" + id + ", nom=" + nom + ", pNom=" + pNom + ", CIN=" + CIN + ", numTele=" + numTele + ", email=" + email + ", profession=" + profession + '}';
     }
+
+    
     
 }
