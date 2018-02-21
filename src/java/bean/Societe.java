@@ -72,6 +72,86 @@ public class Societe implements Serializable {
         this.categorie = categorie;
         this.employes = employes;
     }
+
+    public List<DeclarationIs> getDeclarationIss() {
+        return declarationIss;
+    }
+
+    public void setDeclarationIss(List<DeclarationIs> declarationIss) {
+        this.declarationIss = declarationIss;
+    }
+
+    public List<DeclarationTva> getDeclarationTvas() {
+        return declarationTvas;
+    }
+
+    public void setDeclarationTvas(List<DeclarationTva> declarationTvas) {
+        this.declarationTvas = declarationTvas;
+    }
+
+    public List<DeclarationIr> getDeclarationIrs() {
+        return declarationIrs;
+    }
+
+    public void setDeclarationIrs(List<DeclarationIr> declarationIrs) {
+        this.declarationIrs = declarationIrs;
+    }
+
+    public String getRaisonSociale() {
+        return raisonSociale;
+    }
+
+    public void setRaisonSociale(String raisonSociale) {
+        this.raisonSociale = raisonSociale;
+    }
+
+    public String getSiegeSociale() {
+        return siegeSociale;
+    }
+
+    public void setSiegeSociale(String siegeSociale) {
+        this.siegeSociale = siegeSociale;
+    }
+
+    public String getNumTele() {
+        return numTele;
+    }
+
+    public void setNumTele(String numTele) {
+        this.numTele = numTele;
+    }
+
+    public String getNumFax() {
+        return numFax;
+    }
+
+    public void setNumFax(String numFax) {
+        this.numFax = numFax;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public intervaleIs getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(intervaleIs categorie) {
+        this.categorie = categorie;
+    }
+
+    public List<Employe> getEmployes() {
+        return employes;
+    }
+
+    public void setEmployes(List<Employe> employes) {
+        this.employes = employes;
+    }
     
 
     @Override
