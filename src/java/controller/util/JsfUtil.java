@@ -56,6 +56,5 @@ public class JsfUtil {
         String theId = JsfUtil.getRequestParameter(requestParameterName);
         return converter.getAsObject(FacesContext.getCurrentInstance(), component, theId);
     }
-//haammmzaaaaaaa
 }
 ///jfgzejfhzelfjhzeflizeh
