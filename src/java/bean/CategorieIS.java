@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,8 +7,6 @@ package bean;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -17,52 +14,26 @@ import javax.persistence.Id;
  * @author User
  */
 @Entity
-public class TrancheIr implements Serializable {
+public class CategorieIS implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long mini;
-    private Long maxi;
+    private Double benificeMin;
+    private Double benificeMax;
     private Float taux;
 
-    public TrancheIr() {
+    public CategorieIS() {
     }
 
-    public TrancheIr(Long id) {
+    public CategorieIS(Long id) {
         this.id = id;
     }
 
-    public TrancheIr(Long id, Long mini, Long maxi, Float taux) {
-        this.id = id;
-        this.mini = mini;
-        this.maxi = maxi;
+    public CategorieIS(Double benificeMin, Double benificeMax, Float taux) {
+        this.benificeMin = benificeMin;
+        this.benificeMax = benificeMax;
         this.taux = taux;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getMini() {
-        return mini;
-    }
-
-    public void setMini(Long mini) {
-        this.mini = mini;
-    }
-
-    public Long getMaxi() {
-        return maxi;
-    }
-
-    public void setMaxi(Long maxi) {
-        this.maxi = maxi;
     }
 
     public Float getTaux() {
@@ -73,10 +44,29 @@ public class TrancheIr implements Serializable {
         this.taux = taux;
     }
 
-   
-    
+    public Double getBenificeMin() {
+        return benificeMin;
+    }
 
-   
+    public void setBenificeMin(Double benificeMin) {
+        this.benificeMin = benificeMin;
+    }
+
+    public Double getBenificeMax() {
+        return benificeMax;
+    }
+
+    public void setBenificeMax(Double benificeMax) {
+        this.benificeMax = benificeMax;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
     public int hashCode() {
@@ -88,10 +78,10 @@ public class TrancheIr implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TrancheIr)) {
+        if (!(object instanceof CategorieIS)) {
             return false;
         }
-        TrancheIr other = (TrancheIr) object;
+        CategorieIS other = (CategorieIS) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +90,7 @@ public class TrancheIr implements Serializable {
 
     @Override
     public String toString() {
-        return "TrancheIr{" + "id=" + id + ", mini=" + mini + ", maxi=" + maxi + ", taux=" + taux + '}';
+        return "CategorieIS{" + "id=" + id + ", benificeMin=" + benificeMin + ", benificeMax=" + benificeMax + ", taux=" + taux + '}';
     }
 
 }

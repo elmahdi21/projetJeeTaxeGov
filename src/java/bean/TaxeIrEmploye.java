@@ -29,16 +29,8 @@ public class TaxeIrEmploye implements Serializable {
     @OneToOne
     private Employe employe;
     @OneToOne
-    private TrancheIr trancheIr;
+    private CategorieIR categorieIR;
     private Float montantIr;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public TaxeIrEmploye() {
     }
@@ -47,12 +39,12 @@ public class TaxeIrEmploye implements Serializable {
         this.id = id;
     }
 
-    public TaxeIrEmploye(Long id, DeclarationIr declarationIr, Employe employe, TrancheIr trancheIr, Float montantIr) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
-        this.declarationIr = declarationIr;
-        this.employe = employe;
-        this.trancheIr = trancheIr;
-        this.montantIr = montantIr;
     }
 
     public DeclarationIr getDeclarationIr() {
@@ -71,12 +63,12 @@ public class TaxeIrEmploye implements Serializable {
         this.employe = employe;
     }
 
-    public TrancheIr getTrancheIr() {
-        return trancheIr;
+    public CategorieIR getCategorieIR() {
+        return categorieIR;
     }
 
-    public void setTrancheIr(TrancheIr trancheIr) {
-        this.trancheIr = trancheIr;
+    public void setCategorieIR(CategorieIR categorieIR) {
+        this.categorieIR = categorieIR;
     }
 
     public Float getMontantIr() {
@@ -86,8 +78,6 @@ public class TaxeIrEmploye implements Serializable {
     public void setMontantIr(Float montantIr) {
         this.montantIr = montantIr;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -111,9 +101,7 @@ public class TaxeIrEmploye implements Serializable {
 
     @Override
     public String toString() {
-        return "TaxeIrEmploye{" + "id=" + id + ", employe=" + employe + ", trancheIr=" + trancheIr + ", montantIr=" + montantIr + '}';
+        return "TaxeIrEmploye{" + "id=" + id + ", montantIr=" + montantIr + '}';
     }
-
-   
 
 }

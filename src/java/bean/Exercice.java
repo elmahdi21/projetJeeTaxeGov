@@ -6,11 +6,13 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -24,16 +26,22 @@ public class Exercice implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long montant;
+    private int type;//1;achats ; 2:ventes
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateDebut;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateFin;
     @OneToOne
     private CategorieTVA categorieTVA;
 
     public Exercice() {
     }
 
-    public Exercice(Long id, Long montant, CategorieTVA categorieTVA) {
-        this.id = id;
+    public Exercice(Long montant, int type, Date dateDebut, Date dateFin) {
         this.montant = montant;
-        this.categorieTVA = categorieTVA;
+        this.type = type;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
     }
 
     public Exercice(Long id) {
@@ -57,16 +65,40 @@ public class Exercice implements Serializable {
     }
 
     public CategorieTVA getCategorieTVA() {
+        if (categorieTVA == null) {
+            categorieTVA = new CategorieTVA();
+        }
         return categorieTVA;
     }
 
     public void setCategorieTVA(CategorieTVA categorieTVA) {
         this.categorieTVA = categorieTVA;
     }
-    
-    
 
-   
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -89,11 +121,7 @@ public class Exercice implements Serializable {
 
     @Override
     public String toString() {
-        return "Exercice{" + "id=" + id + ", montant=" + montant + '}';
+        return "Exercice{" + "id=" + id + ", montant=" + montant + ", type=" + type + '}';
     }
 
-    
-    
-
-   
 }

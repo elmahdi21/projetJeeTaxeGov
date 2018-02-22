@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -31,16 +32,30 @@ public class DeclarationIs implements Serializable {
     @ManyToOne
     private Societe societe;
     @OneToOne
-    private TauxIs tauxIs;
+    private CategorieIS categorieIS;
     @OneToMany
     private List<Exercice> exercices;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDeclaration;
-    @OneToOne
-    private RegimeDeclaration regimeDeclaration;
+    private int type;
     private Float gains;
     private Float charges;
     private Float montantIs; // = gains - charges
+
+    public DeclarationIs() {
+    }
+
+    public DeclarationIs(Long id) {
+        this.id = id;
+    }
+
+    public DeclarationIs(Date dateDeclaration, int type, Float gains, Float charges, Float montantIs) {
+        this.dateDeclaration = dateDeclaration;
+        this.type = type;
+        this.gains = gains;
+        this.charges = charges;
+        this.montantIs = montantIs;
+    }
 
     public Long getId() {
         return id;
@@ -50,25 +65,10 @@ public class DeclarationIs implements Serializable {
         this.id = id;
     }
 
-    public DeclarationIs() {
-    }
-
-    public DeclarationIs(Long id) {
-        this.id = id;
-    }
-
-    public DeclarationIs(Long id, Societe societe, TauxIs tauxIs,  Date dateDeclaration, RegimeDeclaration regimeDeclaration, Float gains, Float charges, Float montantIs) {
-        this.id = id;
-        this.societe = societe;
-        this.tauxIs = tauxIs;
-        this.dateDeclaration = dateDeclaration;
-        this.regimeDeclaration = regimeDeclaration;
-        this.gains = gains;
-        this.charges = charges;
-        this.montantIs = montantIs;
-    }
-
     public Societe getSociete() {
+        if (societe == null) {
+            societe = new Societe();
+        }
         return societe;
     }
 
@@ -76,15 +76,10 @@ public class DeclarationIs implements Serializable {
         this.societe = societe;
     }
 
-    public TauxIs getTauxIs() {
-        return tauxIs;
-    }
-
-    public void setTauxIs(TauxIs tauxIs) {
-        this.tauxIs = tauxIs;
-    }
-
     public List<Exercice> getExercices() {
+        if (exercices == null) {
+            exercices = new ArrayList();
+        }
         return exercices;
     }
 
@@ -98,14 +93,6 @@ public class DeclarationIs implements Serializable {
 
     public void setDateDeclaration(Date dateDeclaration) {
         this.dateDeclaration = dateDeclaration;
-    }
-
-    public RegimeDeclaration getRegimeDeclaration() {
-        return regimeDeclaration;
-    }
-
-    public void setRegimeDeclaration(RegimeDeclaration regimeDeclaration) {
-        this.regimeDeclaration = regimeDeclaration;
     }
 
     public Float getGains() {
@@ -131,7 +118,25 @@ public class DeclarationIs implements Serializable {
     public void setMontantIs(Float montantIs) {
         this.montantIs = montantIs;
     }
-    
+
+    public CategorieIS getCategorieIS() {
+        if (categorieIS == null) {
+            categorieIS = new CategorieIS();
+        }
+        return categorieIS;
+    }
+
+    public void setCategorieIS(CategorieIS categorieIS) {
+        this.categorieIS = categorieIS;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     @Override
     public int hashCode() {
@@ -155,9 +160,7 @@ public class DeclarationIs implements Serializable {
 
     @Override
     public String toString() {
-        return "DeclarationIs{" + "id=" + id + ", dateDeclaration=" + dateDeclaration + ", gains=" + gains + ", charges=" + charges + ", montantIs=" + montantIs + '}';
+        return "DeclarationIs{" + "id=" + id + ", dateDeclaration=" + dateDeclaration + ", type=" + type + ", gains=" + gains + ", charges=" + charges + ", montantIs=" + montantIs + '}';
     }
-
-    
 
 }

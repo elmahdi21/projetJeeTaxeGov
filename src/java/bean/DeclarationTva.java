@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -42,7 +43,7 @@ public class DeclarationTva implements Serializable {
     @OneToMany
     private List<Exercice> exercices;
     @OneToOne
-    private RegimeDeclaration regimeDeclaration;
+    private int type;//1: mensuel ; 2: trimensuel
     @ManyToOne
     private Societe societe;
 
@@ -53,19 +54,16 @@ public class DeclarationTva implements Serializable {
         this.id = id;
     }
 
-    public DeclarationTva(String id, boolean isValidated, Date dateCreation, Utilisateur utilisateur, String periode, String annee, Double taxeDue, Double taxeDeductible, Double taxeAverser, Double taxeAreporter, List<Exercice> exercices, RegimeDeclaration regimeDeclaration) {
-        this.id = id;
+    public DeclarationTva(boolean isValidated, Date dateCreation, String periode, String annee, Double taxeDue, Double taxeDeductible, Double taxeAverser, Double taxeAreporter, int type) {
         this.isValidated = isValidated;
         this.dateCreation = dateCreation;
-        this.utilisateur = utilisateur;
         this.periode = periode;
         this.annee = annee;
         this.taxeDue = taxeDue;
         this.taxeDeductible = taxeDeductible;
         this.taxeAverser = taxeAverser;
         this.taxeAreporter = taxeAreporter;
-        this.exercices = exercices;
-        this.regimeDeclaration = regimeDeclaration;
+        this.type = type;
     }
 
     public boolean isIsValidated() {
@@ -85,6 +83,9 @@ public class DeclarationTva implements Serializable {
     }
 
     public Utilisateur getUtilisateur() {
+        if (utilisateur == null) {
+            utilisateur = new Utilisateur();
+        }
         return utilisateur;
     }
 
@@ -141,6 +142,9 @@ public class DeclarationTva implements Serializable {
     }
 
     public List<Exercice> getExercices() {
+        if (exercices == null) {
+            exercices = new ArrayList();
+        }
         return exercices;
     }
 
@@ -148,20 +152,31 @@ public class DeclarationTva implements Serializable {
         this.exercices = exercices;
     }
 
-    public RegimeDeclaration getRegimeDeclaration() {
-        return regimeDeclaration;
-    }
-
-    public void setRegimeDeclaration(RegimeDeclaration regimeDeclaration) {
-        this.regimeDeclaration = regimeDeclaration;
-    }
-    
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public Societe getSociete() {
+        if (societe == null) {
+            societe = new Societe();
+        }
+        return societe;
+    }
+
+    public void setSociete(Societe societe) {
+        this.societe = societe;
     }
 
     @Override
@@ -188,6 +203,5 @@ public class DeclarationTva implements Serializable {
     public String toString() {
         return "DeclarationTva{" + "id=" + id + ", isValidated=" + isValidated + ", dateCreation=" + dateCreation + ", periode=" + periode + ", annee=" + annee + ", taxeDue=" + taxeDue + ", taxeDeductible=" + taxeDeductible + ", taxeAverser=" + taxeAverser + ", taxeAreporter=" + taxeAreporter + '}';
     }
-
 
 }

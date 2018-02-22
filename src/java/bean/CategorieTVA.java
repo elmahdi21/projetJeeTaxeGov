@@ -33,10 +33,18 @@ public class CategorieTVA implements Serializable {
         this.id = id;
     }
 
-    public CategorieTVA(Long id, int num, String nom) {
-        this.id = id;
+    public CategorieTVA(int num, String nom, Float taux) {
         this.num = num;
         this.nom = nom;
+        this.taux = taux;
+    }
+
+    public Float getTaux() {
+        return taux;
+    }
+
+    public void setTaux(Float taux) {
+        this.taux = taux;
     }
 
     public int getNum() {
@@ -54,7 +62,7 @@ public class CategorieTVA implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-        
+
     public Long getId() {
         return id;
     }
@@ -62,16 +70,6 @@ public class CategorieTVA implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Float getTaux() {
-        return taux;
-    }
-
-    public void setTaux(Float taux) {
-        this.taux = taux;
-    }
-    
-    
 
     @Override
     public int hashCode() {
@@ -95,9 +93,7 @@ public class CategorieTVA implements Serializable {
 
     @Override
     public String toString() {
-        return "CategorieTVA{" + "id=" + id + ", num=" + num + ", nom=" + nom + '}';
+        return "CategorieTVA{" + "id=" + id + ", num=" + num + ", nom=" + nom + ", taux=" + taux + '}';
     }
-
-   
 
 }

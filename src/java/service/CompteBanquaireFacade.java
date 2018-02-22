@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author User
+ * @author ushiho
  */
 @Stateless
 public class CompteBanquaireFacade extends AbstractFacade<CompteBanquaire> {

@@ -46,10 +46,9 @@ public class Paiement implements Serializable {
         this.id = id;
     }
 
-    public Paiement(Long id, Double montant, Societe societe, Date datePaiement) {
+    public Paiement(Long id, Double montant, Date datePaiement) {
         this.id = id;
         this.montant = montant;
-        this.societe = societe;
         this.datePaiement = datePaiement;
     }
 
@@ -62,6 +61,9 @@ public class Paiement implements Serializable {
     }
 
     public Societe getSociete() {
+        if (societe == null) {
+            societe = new Societe();
+        }
         return societe;
     }
 
@@ -76,8 +78,6 @@ public class Paiement implements Serializable {
     public void setDatePaiement(Date datePaiement) {
         this.datePaiement = datePaiement;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -103,7 +103,5 @@ public class Paiement implements Serializable {
     public String toString() {
         return "Paiement{" + "id=" + id + ", montant=" + montant + ", societe=" + societe + ", datePaiement=" + datePaiement + '}';
     }
-
-  
 
 }

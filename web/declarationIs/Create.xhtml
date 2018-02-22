@@ -3,49 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition>
-
-        <p:dialog id="DeclarationIsCreateDlg" widgetVar="DeclarationIsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDeclarationIsTitle}">
-            <h:form id="DeclarationIsCreateForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{declarationIsController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{declarationIsController.selected.id}" title="#{bundle.CreateDeclarationIsTitle_id}" />
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_societe}" for="societe" />
-                        <p:selectOneMenu id="societe" value="#{declarationIsController.selected.societe}" >
-                            <f:selectItems value="#{societeController.itemsAvailableSelectOne}"
-                                           var="societeItem"
-                                           itemValue="#{societeItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_tauxIs}" for="tauxIs" />
-                        <p:selectOneMenu id="tauxIs" value="#{declarationIsController.selected.tauxIs}" >
-                            <f:selectItems value="#{tauxIsController.itemsAvailableSelectOne}"
-                                           var="tauxIsItem"
-                                           itemValue="#{tauxIsItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_dateDeclaration}" for="dateDeclaration" />
-                        <p:calendar id="dateDeclaration" pattern="MM/dd/yyyy" value="#{declarationIsController.selected.dateDeclaration}" title="#{bundle.EditDeclarationIsTitle_dateDeclaration}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_regimeDeclaration}" for="regimeDeclaration" />
-                        <p:selectOneMenu id="regimeDeclaration" value="#{declarationIsController.selected.regimeDeclaration}" >
-                            <f:selectItems value="#{regimeDeclarationController.itemsAvailableSelectOne}"
-                                           var="regimeDeclarationItem"
-                                           itemValue="#{regimeDeclarationItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_gains}" for="gains" />
-                        <p:inputText id="gains" value="#{declarationIsController.selected.gains}" title="#{bundle.CreateDeclarationIsTitle_gains}" />
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_charges}" for="charges" />
-                        <p:inputText id="charges" value="#{declarationIsController.selected.charges}" title="#{bundle.CreateDeclarationIsTitle_charges}" />
-                        <p:outputLabel value="#{bundle.CreateDeclarationIsLabel_montantIs}" for="montantIs" />
-                        <p:inputText id="montantIs" value="#{declarationIsController.selected.montantIs}" title="#{bundle.CreateDeclarationIsTitle_montantIs}" />
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{declarationIsController.create}" value="#{bundle.Save}" update="display,:DeclarationIsListForm:datalist,:growl" oncomplete="handleSubmit(args,'DeclarationIsCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="DeclarationIsCreateDialog.hide()"/>
-                </h:panelGroup>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDeclarationIsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{declarationIsController.selected.id}" title="#{bundle.CreateDeclarationIsTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_societe}" for="societe" />
+                    <h:selectOneMenu id="societe" value="#{declarationIsController.selected.societe}" title="#{bundle.CreateDeclarationIsTitle_societe}" >
+                        <f:selectItems value="#{societeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_dateDeclaration}" for="dateDeclaration" />
+                    <h:inputText id="dateDeclaration" value="#{declarationIsController.selected.dateDeclaration}" title="#{bundle.CreateDeclarationIsTitle_dateDeclaration}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_gains}" for="gains" />
+                    <h:inputText id="gains" value="#{declarationIsController.selected.gains}" title="#{bundle.CreateDeclarationIsTitle_gains}" />
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_charges}" for="charges" />
+                    <h:inputText id="charges" value="#{declarationIsController.selected.charges}" title="#{bundle.CreateDeclarationIsTitle_charges}" />
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_montantIs}" for="montantIs" />
+                    <h:inputText id="montantIs" value="#{declarationIsController.selected.montantIs}" title="#{bundle.CreateDeclarationIsTitle_montantIs}" />
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_categorieIS}" for="categorieIS" />
+                    <h:selectOneMenu id="categorieIS" value="#{declarationIsController.selected.categorieIS}" title="#{bundle.CreateDeclarationIsTitle_categorieIS}" >
+                        <f:selectItems value="#{categorieISController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDeclarationIsLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{declarationIsController.selected.type}" title="#{bundle.CreateDeclarationIsTitle_type}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{declarationIsController.create}" value="#{bundle.CreateDeclarationIsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{declarationIsController.prepareList}" value="#{bundle.CreateDeclarationIsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDeclarationIsIndexLink}"/>
             </h:form>
-        </p:dialog>
-
+        </ui:define>
     </ui:composition>
+
 </html>

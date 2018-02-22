@@ -3,93 +3,91 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-
-
         <ui:define name="title">
             <h:outputText value="#{bundle.ListDeclarationIsTitle}"></h:outputText>
         </ui:define>
-
         <ui:define name="body">
-            <h:form id="DeclarationIsListForm">
-                <p:panel header="#{bundle.ListDeclarationIsTitle}">
-                    <p:dataTable id="datalist" value="#{declarationIsController.items}" var="item"
-                                 selectionMode="single" selection="#{declarationIsController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.id}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
-
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
-                        <p:column>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDeclarationIsEmpty}" rendered="#{declarationIsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{declarationIsController.items.rowCount > 0}">
+                    <h:outputText value="#{declarationIsController.pagination.pageFirstItem + 1}..#{declarationIsController.pagination.pageLastItem + 1}/#{declarationIsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{declarationIsController.previous}" value="#{bundle.Previous} #{declarationIsController.pagination.pageSize}" rendered="#{declarationIsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{declarationIsController.next}" value="#{bundle.Next} #{declarationIsController.pagination.pageSize}" rendered="#{declarationIsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{declarationIsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDeclarationIsTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
-                        </p:column>
-                        <p:column>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDeclarationIsTitle_societe}"/>
                             </f:facet>
                             <h:outputText value="#{item.societe}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDeclarationIsTitle_tauxIs}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tauxIs}"/>
-                        </p:column>
-                        <p:column>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDeclarationIsTitle_dateDeclaration}"/>
                             </f:facet>
                             <h:outputText value="#{item.dateDeclaration}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDeclarationIsTitle_regimeDeclaration}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.regimeDeclaration}"/>
-                        </p:column>
-                        <p:column>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDeclarationIsTitle_gains}"/>
                             </f:facet>
                             <h:outputText value="#{item.gains}"/>
-                        </p:column>
-                        <p:column>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDeclarationIsTitle_charges}"/>
                             </f:facet>
                             <h:outputText value="#{item.charges}"/>
-                        </p:column>
-                        <p:column>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDeclarationIsTitle_montantIs}"/>
                             </f:facet>
                             <h:outputText value="#{item.montantIs}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{declarationIsController.prepareCreate}" update=":DeclarationIsCreateForm" oncomplete="PF('DeclarationIsCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":DeclarationIsViewForm" oncomplete="PF('DeclarationIsViewDialog').show()" disabled="#{empty declarationIsController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":DeclarationIsEditForm" oncomplete="PF('DeclarationIsEditDialog').show()" disabled="#{empty declarationIsController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{declarationIsController.destroy}" update=":growl,datalist" disabled="#{empty declarationIsController.selected}"/>
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDeclarationIsTitle_categorieIS}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categorieIS}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDeclarationIsTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{declarationIsController.prepareView}" value="#{bundle.ListDeclarationIsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{declarationIsController.prepareEdit}" value="#{bundle.ListDeclarationIsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{declarationIsController.destroy}" value="#{bundle.ListDeclarationIsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{declarationIsController.prepareCreate}" value="#{bundle.ListDeclarationIsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDeclarationIsIndexLink}"/>
             </h:form>
-
-            <ui:include src="Create.xhtml"/>
-            <ui:include src="Edit.xhtml"/>
-            <ui:include src="View.xhtml"/>
         </ui:define>
     </ui:composition>
 

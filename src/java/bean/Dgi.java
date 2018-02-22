@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,6 +25,8 @@ public class Dgi implements Serializable {
     private Long id;
     private String login;
     private String password;
+    @OneToOne
+    private CompteBanquaire compteBanquaire;
 
     public Dgi() {
     }
@@ -53,13 +56,24 @@ public class Dgi implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public CompteBanquaire getCompteBanquaire() {
+        if (compteBanquaire == null) {
+            compteBanquaire = new CompteBanquaire();
+        }
+        return compteBanquaire;
+    }
+
+    public void setCompteBanquaire(CompteBanquaire compteBanquaire) {
+        this.compteBanquaire = compteBanquaire;
     }
 
     @Override
@@ -86,6 +100,5 @@ public class Dgi implements Serializable {
     public String toString() {
         return "Dgi{" + "id=" + id + ", login=" + login + ", password=" + password + '}';
     }
-
 
 }

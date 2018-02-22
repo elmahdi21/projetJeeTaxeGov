@@ -35,13 +35,10 @@ public class CompteBanquaire implements Serializable {
         this.id = id;
     }
 
-    public CompteBanquaire(Long id, Banque banque, Double solde, String rib) {
-        this.id = id;
-        this.banque = banque;
+    public CompteBanquaire(Double solde, String rib) {
         this.solde = solde;
         this.rib = rib;
     }
-    
 
     public Long getId() {
         return id;
@@ -52,6 +49,9 @@ public class CompteBanquaire implements Serializable {
     }
 
     public Banque getBanque() {
+        if (banque == null) {
+            banque = new Banque();
+        }
         return banque;
     }
 
@@ -74,7 +74,6 @@ public class CompteBanquaire implements Serializable {
     public void setRib(String rib) {
         this.rib = rib;
     }
-    
 
     @Override
     public int hashCode() {
@@ -101,5 +100,4 @@ public class CompteBanquaire implements Serializable {
         return "CompteBanquaire{" + "id=" + id + ", solde=" + solde + ", rib=" + rib + '}';
     }
 
-    
 }

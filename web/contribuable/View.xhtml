@@ -3,38 +3,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewContribuableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewContribuableLabel_motDePasse}"/>
+                    <h:outputText value="#{contribuableController.selected.motDePasse}" title="#{bundle.ViewContribuableTitle_motDePasse}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_idFiscal}"/>
+                    <h:outputText value="#{contribuableController.selected.idFiscal}" title="#{bundle.ViewContribuableTitle_idFiscal}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_societe}"/>
+                    <h:outputText value="#{contribuableController.selected.societe}" title="#{bundle.ViewContribuableTitle_societe}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_nom}"/>
+                    <h:outputText value="#{contribuableController.selected.nom}" title="#{bundle.ViewContribuableTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_pNom}"/>
+                    <h:outputText value="#{contribuableController.selected.pNom}" title="#{bundle.ViewContribuableTitle_pNom}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_CIN}"/>
+                    <h:outputText value="#{contribuableController.selected.CIN}" title="#{bundle.ViewContribuableTitle_CIN}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_numTele}"/>
+                    <h:outputText value="#{contribuableController.selected.numTele}" title="#{bundle.ViewContribuableTitle_numTele}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_email}"/>
+                    <h:outputText value="#{contribuableController.selected.email}" title="#{bundle.ViewContribuableTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_profession}"/>
+                    <h:outputText value="#{contribuableController.selected.profession}" title="#{bundle.ViewContribuableTitle_profession}"/>
+                    <h:outputText value="#{bundle.ViewContribuableLabel_id}"/>
+                    <h:outputText value="#{contribuableController.selected.id}" title="#{bundle.ViewContribuableTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contribuableController.destroyAndView}" value="#{bundle.ViewContribuableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewContribuableEditLink}"/>
+                <br />
+                <h:commandLink action="#{contribuableController.prepareCreate}" value="#{bundle.ViewContribuableCreateLink}" />
+                <br />
+                <h:commandLink action="#{contribuableController.prepareList}" value="#{bundle.ViewContribuableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewContribuableIndexLink}"/>
 
-        <p:dialog id="ContribuableViewDlg" widgetVar="ContribuableViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewContribuableTitle}">
-            <h:form id="ContribuableViewForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{contribuableController.selected != null}">
-                        <h:outputText value="#{bundle.ViewContribuableLabel_motDePasse}"/>
-                        <h:outputText value="#{contribuableController.selected.motDePasse}" title="#{bundle.ViewContribuableTitle_motDePasse}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_idFiscal}"/>
-                        <h:outputText value="#{contribuableController.selected.idFiscal}" title="#{bundle.ViewContribuableTitle_idFiscal}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_nom}"/>
-                        <h:outputText value="#{contribuableController.selected.nom}" title="#{bundle.ViewContribuableTitle_nom}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_pNom}"/>
-                        <h:outputText value="#{contribuableController.selected.pNom}" title="#{bundle.ViewContribuableTitle_pNom}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_CIN}"/>
-                        <h:outputText value="#{contribuableController.selected.CIN}" title="#{bundle.ViewContribuableTitle_CIN}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_numTele}"/>
-                        <h:outputText value="#{contribuableController.selected.numTele}" title="#{bundle.ViewContribuableTitle_numTele}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_email}"/>
-                        <h:outputText value="#{contribuableController.selected.email}" title="#{bundle.ViewContribuableTitle_email}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_profession}"/>
-                        <h:outputText value="#{contribuableController.selected.profession}" title="#{bundle.ViewContribuableTitle_profession}"/>
-                        <h:outputText value="#{bundle.ViewContribuableLabel_id}"/>
-                        <h:outputText value="#{contribuableController.selected.id}" title="#{bundle.ViewContribuableTitle_id}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="ContribuableViewDialog.hide()"/>
-                </h:panelGroup>
             </h:form>
-        </p:dialog>
-
+        </ui:define>
     </ui:composition>
+
 </html>

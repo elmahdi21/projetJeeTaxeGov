@@ -3,23 +3,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition>
-
-        <p:dialog id="CompteBanquaireEditDlg" widgetVar="CompteBanquaireEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCompteBanquaireTitle}">
-            <h:form id="CompteBanquaireEditForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{compteBanquaireController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCompteBanquaireLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{compteBanquaireController.selected.id}" title="#{bundle.EditCompteBanquaireTitle_id}" />
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{compteBanquaireController.update}" value="#{bundle.Save}" update="display,:CompteBanquaireListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CompteBanquaireEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="CompteBanquaireEditDialog.hide()"/>
-                </h:panelGroup>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCompteBanquaireTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCompteBanquaireLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{compteBanquaireController.selected.id}" title="#{bundle.EditCompteBanquaireTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditCompteBanquaireLabel_banque}" for="banque" />
+                    <h:selectOneMenu id="banque" value="#{compteBanquaireController.selected.banque}" title="#{bundle.EditCompteBanquaireTitle_banque}" >
+                        <f:selectItems value="#{banqueController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCompteBanquaireLabel_solde}" for="solde" />
+                    <h:inputText id="solde" value="#{compteBanquaireController.selected.solde}" title="#{bundle.EditCompteBanquaireTitle_solde}" />
+                    <h:outputLabel value="#{bundle.EditCompteBanquaireLabel_rib}" for="rib" />
+                    <h:inputText id="rib" value="#{compteBanquaireController.selected.rib}" title="#{bundle.EditCompteBanquaireTitle_rib}" />
+                </h:panelGrid>
+                <h:commandLink action="#{compteBanquaireController.update}" value="#{bundle.EditCompteBanquaireSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCompteBanquaireViewLink}"/>
+                <br />
+                <h:commandLink action="#{compteBanquaireController.prepareList}" value="#{bundle.EditCompteBanquaireShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCompteBanquaireIndexLink}" />
             </h:form>
-        </p:dialog>
-
+        </ui:define>
     </ui:composition>
+
 </html>

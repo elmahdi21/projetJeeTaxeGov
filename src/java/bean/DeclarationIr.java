@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -23,9 +24,6 @@ import javax.persistence.Temporal;
 @Entity
 public class DeclarationIr implements Serializable {
 
-    @OneToMany(mappedBy = "declarationIr")
-    private List<TaxeIrEmploye> taxeIrEmployes;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +35,8 @@ public class DeclarationIr implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDeclaration;
     private Float montantIr;
+    @OneToMany(mappedBy = "declarationIr")
+    private List<TaxeIrEmploye> taxeIrEmployes;
 
     public DeclarationIr() {
     }
@@ -45,13 +45,13 @@ public class DeclarationIr implements Serializable {
         this.id = id;
     }
 
-    public DeclarationIr( Long id, Societe societe, Date dateDeclaration, Float montantIr) {
+    public DeclarationIr(Long id, Societe societe, Date dateDeclaration, Float montantIr) {
         this.id = id;
         this.societe = societe;
         this.dateDeclaration = dateDeclaration;
         this.montantIr = montantIr;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -61,6 +61,9 @@ public class DeclarationIr implements Serializable {
     }
 
     public List<TaxeIrEmploye> getTaxeIrEmployes() {
+        if (taxeIrEmployes == null) {
+            taxeIrEmployes = new ArrayList();
+        }
         return taxeIrEmployes;
     }
 
@@ -69,6 +72,9 @@ public class DeclarationIr implements Serializable {
     }
 
     public Societe getSociete() {
+        if (societe == null) {
+            societe = new Societe();
+        }
         return societe;
     }
 
@@ -77,6 +83,9 @@ public class DeclarationIr implements Serializable {
     }
 
     public List<Employe> getEmployes() {
+        if (employes == null) {
+            employes = new ArrayList();
+        }
         return employes;
     }
 
@@ -99,8 +108,6 @@ public class DeclarationIr implements Serializable {
     public void setMontantIr(Float montantIr) {
         this.montantIr = montantIr;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -126,8 +133,5 @@ public class DeclarationIr implements Serializable {
     public String toString() {
         return "DeclarationIr{" + "id=" + id + ", dateDeclaration=" + dateDeclaration + ", montantIr=" + montantIr + '}';
     }
-
-    
-
 
 }

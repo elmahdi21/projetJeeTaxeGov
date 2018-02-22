@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -97,8 +98,7 @@ public class Employe implements Serializable {
     public void setProfession(String profession) {
         this.profession = profession;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -108,13 +108,15 @@ public class Employe implements Serializable {
     }
 
     public List<Societe> getSocietes() {
+        if (societes == null) {
+            societes = new ArrayList();
+        }
         return societes;
     }
 
     public void setSocietes(List<Societe> societes) {
         this.societes = societes;
     }
-    
 
     @Override
     public int hashCode() {
@@ -141,6 +143,4 @@ public class Employe implements Serializable {
         return "Employe{" + "id=" + id + ", nom=" + nom + ", pNom=" + pNom + ", CIN=" + CIN + ", numTele=" + numTele + ", email=" + email + ", profession=" + profession + '}';
     }
 
-    
-    
 }

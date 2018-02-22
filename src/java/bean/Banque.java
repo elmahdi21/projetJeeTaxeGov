@@ -6,12 +6,10 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,8 +23,6 @@ public class Banque implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nom;
-    @OneToMany(mappedBy = "banque")
-    private List<CompteBanquaire> compteBanquaires;
 
     public Banque() {
     }
@@ -41,13 +37,7 @@ public class Banque implements Serializable {
         this.nom = nom;
     }
 
-    public List<CompteBanquaire> getCompteBanquaires() {
-        return compteBanquaires;
-    }
-
-    public void setCompteBanquaires(List<CompteBanquaire> compteBanquaires) {
-        this.compteBanquaires = compteBanquaires;
-    }
+   
 
     public String getNom() {
         return nom;

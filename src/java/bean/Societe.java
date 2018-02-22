@@ -6,14 +6,15 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -21,16 +22,6 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Societe implements Serializable {
-
-    @OneToMany(mappedBy = "societe")
-    private List<DeclarationIs> declarationIss;
-
-    
-    @OneToMany(mappedBy = "societe")
-    private List<DeclarationTva> declarationTvas;
-
-    @OneToMany(mappedBy = "societe")
-    private List<DeclarationIr> declarationIrs;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,9 +32,10 @@ public class Societe implements Serializable {
     private String numTele;
     private String numFax;
     private String email;
-    @ManyToOne
-    private intervaleIs categorie;
-
+    @OneToOne
+    private Contribuable contribuable;
+    @OneToMany
+    private List<CompteBanquaire> compteBanquaires;
     @ManyToMany
     private List<Employe> employes;
 
@@ -55,45 +47,19 @@ public class Societe implements Serializable {
         this.id = id;
     }
 
-    public Societe(long id) {
-        this.id = id;
-    }
-
-    public Societe() {
-    }
-
-    public Societe(long id, String raisonSociale, String siegeSociale, String numTele, String numFax, String email, intervaleIs categorie) {
-        this.id = id;
+    public Societe(String raisonSociale, String siegeSociale, String numTele, String numFax, String email) {
         this.raisonSociale = raisonSociale;
         this.siegeSociale = siegeSociale;
         this.numTele = numTele;
         this.numFax = numFax;
         this.email = email;
-        this.categorie = categorie;
     }
 
-    public List<DeclarationIs> getDeclarationIss() {
-        return declarationIss;
+    public Societe(long id) {
+        this.id = id;
     }
 
-    public void setDeclarationIss(List<DeclarationIs> declarationIss) {
-        this.declarationIss = declarationIss;
-    }
-
-    public List<DeclarationTva> getDeclarationTvas() {
-        return declarationTvas;
-    }
-
-    public void setDeclarationTvas(List<DeclarationTva> declarationTvas) {
-        this.declarationTvas = declarationTvas;
-    }
-
-    public List<DeclarationIr> getDeclarationIrs() {
-        return declarationIrs;
-    }
-
-    public void setDeclarationIrs(List<DeclarationIr> declarationIrs) {
-        this.declarationIrs = declarationIrs;
+    public Societe() {
     }
 
     public String getRaisonSociale() {
@@ -136,20 +102,37 @@ public class Societe implements Serializable {
         this.email = email;
     }
 
-    public intervaleIs getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(intervaleIs categorie) {
-        this.categorie = categorie;
-    }
-
     public List<Employe> getEmployes() {
+        if (employes == null) {
+            employes = new ArrayList();
+        }
         return employes;
     }
 
     public void setEmployes(List<Employe> employes) {
         this.employes = employes;
+    }
+
+    public Contribuable getContribuable() {
+        if (contribuable == null) {
+            contribuable = new Contribuable();
+        }
+        return contribuable;
+    }
+
+    public void setContribuable(Contribuable contribuable) {
+        this.contribuable = contribuable;
+    }
+
+    public List<CompteBanquaire> getCompteBanquaires() {
+        if (compteBanquaires == null) {
+            compteBanquaires = new ArrayList();
+        }
+        return compteBanquaires;
+    }
+
+    public void setCompteBanquaires(List<CompteBanquaire> compteBanquaires) {
+        this.compteBanquaires = compteBanquaires;
     }
 
     @Override

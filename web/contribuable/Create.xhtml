@@ -3,39 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition>
-
-        <p:dialog id="ContribuableCreateDlg" widgetVar="ContribuableCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateContribuableTitle}">
-            <h:form id="ContribuableCreateForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{contribuableController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_motDePasse}" for="motDePasse" />
-                        <p:inputText id="motDePasse" value="#{contribuableController.selected.motDePasse}" title="#{bundle.CreateContribuableTitle_motDePasse}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_idFiscal}" for="idFiscal" />
-                        <p:inputText id="idFiscal" value="#{contribuableController.selected.idFiscal}" title="#{bundle.CreateContribuableTitle_idFiscal}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{contribuableController.selected.nom}" title="#{bundle.CreateContribuableTitle_nom}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_pNom}" for="pNom" />
-                        <p:inputText id="pNom" value="#{contribuableController.selected.pNom}" title="#{bundle.CreateContribuableTitle_pNom}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_CIN}" for="CIN" />
-                        <p:inputText id="CIN" value="#{contribuableController.selected.CIN}" title="#{bundle.CreateContribuableTitle_CIN}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_numTele}" for="numTele" />
-                        <p:inputText id="numTele" value="#{contribuableController.selected.numTele}" title="#{bundle.CreateContribuableTitle_numTele}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_email}" for="email" />
-                        <p:inputText id="email" value="#{contribuableController.selected.email}" title="#{bundle.CreateContribuableTitle_email}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_profession}" for="profession" />
-                        <p:inputText id="profession" value="#{contribuableController.selected.profession}" title="#{bundle.CreateContribuableTitle_profession}" />
-                        <p:outputLabel value="#{bundle.CreateContribuableLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{contribuableController.selected.id}" title="#{bundle.CreateContribuableTitle_id}" />
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{contribuableController.create}" value="#{bundle.Save}" update="display,:ContribuableListForm:datalist,:growl" oncomplete="handleSubmit(args,'ContribuableCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ContribuableCreateDialog.hide()"/>
-                </h:panelGroup>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateContribuableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_motDePasse}" for="motDePasse" />
+                    <h:inputText id="motDePasse" value="#{contribuableController.selected.motDePasse}" title="#{bundle.CreateContribuableTitle_motDePasse}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_idFiscal}" for="idFiscal" />
+                    <h:inputText id="idFiscal" value="#{contribuableController.selected.idFiscal}" title="#{bundle.CreateContribuableTitle_idFiscal}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_societe}" for="societe" />
+                    <h:selectOneMenu id="societe" value="#{contribuableController.selected.societe}" title="#{bundle.CreateContribuableTitle_societe}" >
+                        <f:selectItems value="#{societeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_nom}" for="nom" />
+                    <h:inputText id="nom" value="#{contribuableController.selected.nom}" title="#{bundle.CreateContribuableTitle_nom}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_pNom}" for="pNom" />
+                    <h:inputText id="pNom" value="#{contribuableController.selected.pNom}" title="#{bundle.CreateContribuableTitle_pNom}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_CIN}" for="CIN" />
+                    <h:inputText id="CIN" value="#{contribuableController.selected.CIN}" title="#{bundle.CreateContribuableTitle_CIN}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_numTele}" for="numTele" />
+                    <h:inputText id="numTele" value="#{contribuableController.selected.numTele}" title="#{bundle.CreateContribuableTitle_numTele}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{contribuableController.selected.email}" title="#{bundle.CreateContribuableTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_profession}" for="profession" />
+                    <h:inputText id="profession" value="#{contribuableController.selected.profession}" title="#{bundle.CreateContribuableTitle_profession}" />
+                    <h:outputLabel value="#{bundle.CreateContribuableLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contribuableController.selected.id}" title="#{bundle.CreateContribuableTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contribuableController.create}" value="#{bundle.CreateContribuableSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contribuableController.prepareList}" value="#{bundle.CreateContribuableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateContribuableIndexLink}"/>
             </h:form>
-        </p:dialog>
-
+        </ui:define>
     </ui:composition>
+
 </html>
